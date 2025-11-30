@@ -7,19 +7,18 @@ services:
     ports:
       - "5678:5678"
     environment:
-    - N8N_HOST=n8n.nhxlap.id.vn
-    - N8N_PORT=5678
-    - N8N_PROTOCOL=https
-    - WEBHOOK_URL=https://n8n.nhxlap.id.vn/
-    - N8N_ENDPOINT_WEBHOOK=webhook
-    - N8N_ENDPOINT_WEBHOOK_TEST=webhook-test
+      - N8N_HOST=n8n.nhxlap.id.vn
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://n8n.nhxlap.id.vn/
+      - TZ=Asia/Ho_Chi_Minh
     volumes:
-      - ./data:/data
+       - "D:/code n8n/n8n:/home/node/.n8n"
     restart: always
 
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared
-    command: tunnel --no-autoupdate run --token eyJhIjoiN2I5OWVhNjM0MDk0ZTQyYjNmYTEyOWI3NmUyMDFjY2YiLCJ0IjoiMWJjMzIxMmEtYjg4Yy00NWJlLTgzODAtYjk4MTI4MTA2MjJkIiwicyI6IlpXSmlOVEk1WldJdE16azVaQzAwWkdaaExXSmlNR1V0TUdVMllUTmxNalE0TkdZdyJ9
     restart: always
-
+    command: >
+      tunnel --no-autoupdate run --token eyJhIjoiN2I5OWVhNjM0MDk0ZTQyYjNmYTEyOWI3NmUyMDFjY2YiLCJ0IjoiMWJjMzIxMmEtYjg4Yy00NWJlLTgzODAtYjk4MTI4MTA2MjJkIiwicyI6IlpXSmlOVEk1WldJdE16azVaQzAwWkdaaExXSmlNR1V0TUdVMllUTmxNalE0TkdZdyJ9
